@@ -1,3 +1,5 @@
+# Random links generator
+
 ## What is this
 
 This is a small web application that on a page generates random links to itself. Useless on its own, but useful for testing a future crawling and scraping library.
