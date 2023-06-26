@@ -15,15 +15,26 @@ function makeid(length: number) {
   return result;
 }
 
-const appContainer = document.querySelector<HTMLDivElement>("#app");
+function createLinks(numberOfLinks: number, linkLength: number) {
+  const appContainer = document.querySelector<HTMLDivElement>("#app");
 
-for (let i = 0; i < import.meta.env.VITE_NUMBER_OF_LINKS; i++) {
-  const a = document.createElement("a");
-  a.href = makeid(import.meta.env.VITE_LINK_LENGTH);
-  a.innerText = a.href;
+  if (!appContainer) {
+    throw new Error("App container does not exist");
+  }
 
-  const div = document.createElement("div");
-  div.appendChild(a);
+  for (let i = 0; i < numberOfLinks; i++) {
+    const a = document.createElement("a");
+    a.href = makeid(linkLength);
+    a.innerText = a.href;
 
-  appContainer?.appendChild(div);
+    const div = document.createElement("div");
+    div.appendChild(a);
+
+    appContainer.appendChild(div);
+  }
 }
+
+createLinks(
+  import.meta.env.VITE_NUMBER_OF_LINKS,
+  import.meta.env.VITE_LINK_LENGTH
+);
