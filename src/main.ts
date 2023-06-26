@@ -15,9 +15,15 @@ function makeid(length: number) {
   return result;
 }
 
-for (let i = 0; i < 10; i++) {
+const appContainer = document.querySelector<HTMLDivElement>("#app");
+
+for (let i = 0; i < import.meta.env.VITE_NUMBER_OF_LINKS; i++) {
   const a = document.createElement("a");
-  a.href = makeid(5);
+  a.href = makeid(import.meta.env.VITE_LINK_LENGTH);
   a.innerText = a.href;
-  document.querySelector<HTMLDivElement>("#app")?.appendChild(a);
+
+  const div = document.createElement("div");
+  div.appendChild(a);
+
+  appContainer?.appendChild(div);
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "cp .env.template .env"
   },
   "devDependencies": {
     "prettier": "2.8.8",
