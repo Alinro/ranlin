@@ -15,13 +15,11 @@ function makeid(length: number) {
   return result;
 }
 
-function createLinks(numberOfLinks: number, linkLength: number) {
-  const appContainer = document.querySelector<HTMLDivElement>("#app");
-
-  if (!appContainer) {
-    throw new Error("App container does not exist");
-  }
-
+function createLinks(
+  appContainer: HTMLDivElement,
+  numberOfLinks: number,
+  linkLength: number
+) {
   for (let i = 0; i < numberOfLinks; i++) {
     const a = document.createElement("a");
     a.href = makeid(linkLength);
@@ -34,7 +32,41 @@ function createLinks(numberOfLinks: number, linkLength: number) {
   }
 }
 
-createLinks(
+function createMetadata(
+  appContainer: HTMLDivElement,
+  numberOfMetadata: number
+) {
+  for (let i = 0; i < numberOfMetadata; i++) {
+    const p1 = document.createElement("p");
+    p1.textContent = makeid(7);
+    p1.classList.add("first");
+
+    const p2 = document.createElement("p");
+    p2.textContent = makeid(3);
+    p2.classList.add("second");
+
+    appContainer.appendChild(p1);
+    appContainer.appendChild(p2);
+  }
+}
+
+function createContent(
+  numberOfLinks: number,
+  linkLength: number,
+  numberOfMetadata: number
+) {
+  const appContainer = document.querySelector<HTMLDivElement>("#app");
+
+  if (!appContainer) {
+    throw new Error("App container does not exist");
+  }
+
+  createLinks(appContainer, numberOfLinks, linkLength);
+  createMetadata(appContainer, numberOfMetadata);
+}
+
+createContent(
   import.meta.env.VITE_NUMBER_OF_LINKS,
-  import.meta.env.VITE_LINK_LENGTH
+  import.meta.env.VITE_LINK_LENGTH,
+  import.meta.env.VITE_NUMBER_OF_METADATA
 );
