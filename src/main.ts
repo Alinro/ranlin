@@ -45,8 +45,12 @@ function createMetadata(
     p2.textContent = makeid(3);
     p2.classList.add("second");
 
-    appContainer.appendChild(p1);
-    appContainer.appendChild(p2);
+    const div = document.createElement("div");
+
+    div.appendChild(p1);
+    div.appendChild(p2);
+
+    appContainer.appendChild(div);
   }
 }
 
